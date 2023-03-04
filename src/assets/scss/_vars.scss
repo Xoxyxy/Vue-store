@@ -1,11 +1,11 @@
 :root {
   --font-family: 'Poppins';
-  --content-width: 117rem;
+  --content-width: 124rem;
   --container-offset: 1.5rem;
   --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
 
   // colors
   --light-color: #fff;
-  --black-color: #151515;
+  --black-color: #272727;
   --accent-color: #7b61ff;
 }
