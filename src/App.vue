@@ -1,5 +1,7 @@
 <template>
-  <div>Vue store</div>
+  <div class="wrapper">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
