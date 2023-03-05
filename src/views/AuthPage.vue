@@ -13,7 +13,7 @@
 <script>
 import UiForm from '../components/UI/UIForm.vue'
 import {useAuthStore} from '../stores/AuthStore'
-import router from "../router";
+import router from '../router'
 
 export default {
   name: "auth",
