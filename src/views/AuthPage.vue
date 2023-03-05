@@ -2,17 +2,16 @@
   <div class="auth">
     <div class="container auth__container">
       <h1 class="auth__title">Sign in</h1>
-      <form class="auth__form">
-        <input type="text" class="auth__input input-reset" placeholder="Login" required>
-        <input type="password" class="auth__input input-reset" placeholder="Password" required>
-        <button class="auth__btn btn-reset" type="submit">Sing In</button>
-      </form>
+      <ui-form login-placeholder="Login" password-placeholder="Password" button-value="Sign In"/>
     </div>
   </div>
 </template>
 
 <script>
+import UiForm from '../components/UI/UIForm.vue'
+
 export default {
-  name: "auth"
+  name: "auth",
+  components: {UiForm}
 }
 </script>
