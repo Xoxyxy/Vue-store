@@ -1,0 +1,30 @@
+.header {
+  padding: 1.8rem;
+
+  &__container {
+    @include flex-all-sb;
+    gap: 1.5rem
+  }
+
+  &__logo {
+    font-weight: 600;
+    font-size: 4.2rem;
+    line-height: 120%;
+    color: var(--light-color);
+  }
+
+  &__logout {
+    font-weight: 600;
+    font-size: 1.8rem;
+    line-height: 110%;
+    color: var(--light-color);
+    background-color: var(--accent-color);
+    border-radius: 1rem;
+    padding: 1rem 1.4rem;
+    transition: all .2s ease-in-out;
+
+    &:hover {
+      opacity: .9;
+    }
+  }
+}
