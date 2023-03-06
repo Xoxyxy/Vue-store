@@ -1,12 +1,15 @@
 <template>
   <form class="auth__form form">
-    <input type="text" class="form__input input-reset" :placeholder="loginPlaceholder" required>
-    <input type="password" class="form__input input-reset" :placeholder="passwordPlaceholder" required>
+    <input v-model="authStore.login" type="text" class="form__input input-reset" :placeholder="loginPlaceholder" required>
+    <input v-model="authStore.password" type="password" class="form__input input-reset" :placeholder="passwordPlaceholder"
+           required>
     <button class="form__btn btn-reset" type="submit">{{ buttonValue }}</button>
   </form>
 </template>
 
 <script>
+import {useAuthStore} from '../../stores/AuthStore'
+
 export default {
   name: "ui-form",
   props: {
@@ -22,6 +25,11 @@ export default {
       type: String,
       required: true
     }
+  },
+  setup() {
+    const authStore = useAuthStore()
+
+    return {authStore}
   }
 }
 </script>

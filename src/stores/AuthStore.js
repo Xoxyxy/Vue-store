@@ -1,28 +1,41 @@
 import {defineStore} from 'pinia'
-import {ref, watch} from 'vue'
+import {ref} from 'vue'
+
 import router from '../router'
+import auth from '../services/auth'
+
+import {useLoaderStore} from './LoaderStore'
 
 export const useAuthStore = defineStore('authStore', () => {
-  const isAuth = ref(false)
+  const token = ref('')
+  const login = ref('')
+  const password = ref('')
+
+  const loaderStore = useLoaderStore()
 
   const signIn = () => {
-    isAuth.value = true
-    router.push('/')
+    loaderStore.loading()
+    auth(login.value, password.value)
+      .then(res => {
+        token.value = res.token
+        localStorage.setItem('token', JSON.stringify(res.token))
+        login.value = ''
+        password.value = ''
+        router.push('/')
+        loaderStore.loading()
+      })
   }
 
   const logOut = () => {
-    isAuth.value = false
+    localStorage.removeItem('token')
     router.push('/login')
+    token.value = ''
   }
 
-  const getAuthStatusInLocalStorage = JSON.parse(localStorage.getItem('isAuth'))
+  const getAuthStatusInLocalStorage = localStorage.getItem('token')
   if (getAuthStatusInLocalStorage) {
-    isAuth.value = true
+    token.value = getAuthStatusInLocalStorage
   }
 
-  watch(() => isAuth, (state) => {
-    localStorage.setItem('isAuth', JSON.stringify(state.value))
-  }, {deep: true})
-
-  return {isAuth, signIn, logOut}
+  return {login, password, token, signIn, logOut}
 })

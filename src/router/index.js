@@ -31,15 +31,16 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const authStore = useAuthStore()
+  const token = localStorage.getItem('token')
+
   if (to.name !== 'login') {
-    if (!authStore.isAuth) {
+    if (!token) {
       return next({
         name: 'login'
       })
     }
   }
-  if (to.name === 'login' && authStore.isAuth) {
+  if (to.name === 'login' && token) {
     return next({
       name: 'home'
     })

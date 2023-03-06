@@ -5,11 +5,8 @@ export const useLoaderStore = defineStore('loaderStore', () => {
   const isLoading = ref(false)
 
   const loading = () => {
-    isLoading.value = true
-    setTimeout(() => {
-      isLoading.value = false
-    }, 500)
+    isLoading.value = !isLoading.value
   }
 
-  return {isLoading, loading}
+  return {loading, isLoading}
 })
