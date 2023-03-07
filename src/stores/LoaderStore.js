@@ -5,8 +5,12 @@ export const useLoaderStore = defineStore('loaderStore', () => {
   const isLoading = ref(false)
 
   const loading = () => {
-    isLoading.value = !isLoading.value
+    isLoading.value = true
   }
 
-  return {loading, isLoading}
+  const endLoading = () => {
+    isLoading.value = false
+  }
+
+  return {loading, endLoading, isLoading}
 })

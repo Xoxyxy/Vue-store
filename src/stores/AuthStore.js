@@ -4,25 +4,28 @@ import {ref} from 'vue'
 import router from '../router'
 import auth from '../services/auth'
 
-import {useLoaderStore} from './LoaderStore'
-
 export const useAuthStore = defineStore('authStore', () => {
   const token = ref('')
   const login = ref('')
   const password = ref('')
-
-  const loaderStore = useLoaderStore()
+  const failedAuth = ref(false)
 
   const signIn = () => {
-    loaderStore.loading()
     auth(login.value, password.value)
       .then(res => {
-        token.value = res.token
-        localStorage.setItem('token', JSON.stringify(res.token))
-        login.value = ''
-        password.value = ''
-        router.push('/')
-        loaderStore.loading()
+        try {
+          token.value = res.token
+          localStorage.setItem('token', JSON.stringify(res.token))
+          router.push('/')
+        } catch (err) {
+          failedAuth.value = true
+          setTimeout(() => {
+            failedAuth.value = false
+          }, 8000)
+        } finally {
+          login.value = ''
+          password.value = ''
+        }
       })
   }
 
@@ -37,5 +40,5 @@ export const useAuthStore = defineStore('authStore', () => {
     token.value = getAuthStatusInLocalStorage
   }
 
-  return {login, password, token, signIn, logOut}
+  return {login, password, token, failedAuth, signIn, logOut}
 })

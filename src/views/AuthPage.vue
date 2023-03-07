@@ -2,6 +2,9 @@
   <div class="auth">
     <div class="container auth__container">
       <h1 class="auth__title">Sign in</h1>
+      <div v-if="authStore.failedAuth" class="auth__failed">
+        User is not defined. Try - Login: <span>mor_2314</span> Password: <span>83r5^_</span>
+      </div>
       <ui-form @submit.prevent="authStore.signIn"
                login-placeholder="Login"
                password-placeholder="Password"
