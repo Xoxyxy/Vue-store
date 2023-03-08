@@ -1,5 +1,6 @@
 .header {
   padding: 1.8rem;
+  box-shadow: 0 .8rem 1rem rgba(0, 0, 0, 0.27);
 
   &__container {
     @include flex-all-sb;

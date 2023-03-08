@@ -1,0 +1,50 @@
+.card {
+  padding: 4rem 0;
+
+  &__list {
+    @include flex-all-center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  &__item {
+    width: 30rem;
+    height: 40rem;
+    background-color: var(--light-color);
+    padding: 2rem;
+    border-radius: .5rem;
+  }
+
+  &__content {
+    @include flex-all-center;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &__img {
+    max-width: 15rem;
+    margin-top: auto;
+  }
+
+  &__bottom {
+    margin-top: auto;
+    text-align: center;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 1.8rem;
+    line-height: 110%;
+    color: var(--black-color);
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+  }
+
+  &__price {
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 100%;
+    color: var(--black-color);
+  }
+
+}
