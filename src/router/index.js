@@ -4,8 +4,6 @@ import {createWebHistory} from 'vue-router'
 import auth from '../views/AuthPage.vue'
 import home from '../views/HomePage.vue'
 
-import {useAuthStore} from '../stores/AuthStore'
-
 const routes = [
   {
     path: '/',
